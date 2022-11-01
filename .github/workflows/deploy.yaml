@@ -1,0 +1,34 @@
+name: Auto Deploy Github Pages
+
+on:
+  push:
+    branches:
+    - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build
+
+      - name: Deploy
+        run: |
+          cd dist
+
+          echo > .nojekyll
+
+          git config --global user.name github-actions
+          git config --global user.email github-actions@github.com
+
+          git init
+          git checkout -B main
+          git add -A
+          git commit -m 'deploy'
+          git push -f https://pulcherriman:${{ secrets.GITHUB_TOKEN }}@github.com/pulcherriman/biscuit-clicker.git main:gh-pages
