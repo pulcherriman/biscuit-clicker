@@ -3,5 +3,5 @@
 </script>
 
 <template>
-	this is Upgrade view.
+	ここはアップグレード画面
 </template>
