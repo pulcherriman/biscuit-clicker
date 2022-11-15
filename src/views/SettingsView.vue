@@ -3,5 +3,5 @@
 </script>
 
 <template>
-	this is Settings view.
+	ここは設定画面
 </template>
