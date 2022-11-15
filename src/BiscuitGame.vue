@@ -1,9 +1,3 @@
-<script setup lang="ts">
-import BiscuitArea from "@/views/BiscuitArea.vue";
-import MenuArea from "@/views/MenuArea.vue";
-
-</script>
-
 <template>
 	<div class="flex flex-row w-full h-full">
 		<BiscuitArea class="flex-1"/>
@@ -14,3 +8,8 @@ import MenuArea from "@/views/MenuArea.vue";
 <style scoped>
 
 </style>
+
+<script setup lang="ts">
+import BiscuitArea from "@/views/BiscuitArea.vue";
+import MenuArea from "@/views/MenuArea.vue";
+</script>

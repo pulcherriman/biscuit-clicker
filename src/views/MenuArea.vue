@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { RouterLink, RouterView } from "vue-router";
-</script>
-
 <template>
 	<div class="bg-blue-50">
 		<div class="flex flex-row justify-center">
@@ -24,3 +20,8 @@ import { RouterLink, RouterView } from "vue-router";
 		background-color: rgba(32, 32, 32, 0.5);
 	}
 </style>
+
+<script setup lang="ts">
+import { RouterLink, RouterView } from "vue-router";
+</script>
+
