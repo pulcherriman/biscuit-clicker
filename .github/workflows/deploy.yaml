@@ -20,8 +20,6 @@ jobs:
 
       - name: Deploy
         run: |
-          cd dist
-
           echo > .nojekyll
 
           git config --global user.name github-actions
@@ -32,3 +30,4 @@ jobs:
           git add -A
           git commit -m 'deploy'
           git push -f https://pulcherriman:${{ secrets.GITHUB_TOKEN }}@github.com/pulcherriman/biscuit-clicker.git main:gh-pages
+        working-directory: dist
