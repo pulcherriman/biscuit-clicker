@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
-import UpgradeView from "@/views/UpgradeView.vue";
+import ShopView from "@/views/ShopView.vue";
 import SettingsView from "@/views/SettingsView.vue";
 
 const router = createRouter({
@@ -8,7 +8,7 @@ const router = createRouter({
     {
       path: "/",
       name: "biscuithome",
-      component: UpgradeView,
+      component: ShopView,
     },
     {
       path: "/settings",
