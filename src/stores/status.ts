@@ -3,7 +3,7 @@ import { defineStore } from "pinia";
 
 export const useStatusStore = defineStore("status", () => {
 	const loadFromLocalStorage = (): SaveData => {
-		const saveString: string = localStorage.getItem("savedata") || "";
+		const saveString: string = localStorage.getItem("savedata") || (new SaveData()).toString();
 		return SaveData.createFromString(saveString);
 	};
 	const saveData: SaveData = reactive(loadFromLocalStorage());
@@ -22,6 +22,8 @@ export const useStatusStore = defineStore("status", () => {
 
 class SaveData {
 	biscuits: number = 0;
+	biscuitsPerSecond: number = 3.155;
+	biscuitsPerClick: number = 4.0;
 
 	public constructor(
 		fields?: {
