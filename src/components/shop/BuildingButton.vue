@@ -17,25 +17,8 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps  } from 'vue';
+import type Building from "@/models/Building";
 const props = defineProps<{
-	building: {
-		name: {
-			type: String,
-			required: true,
-		},
-		price: {
-			type: Number,
-			required: true,
-		},
-		count: {
-			type: Number,
-			required: true,
-		},
-		production: {
-			type: Number,
-			required: true,
-		},
-	}
+	building: Building
 }>();
 </script>
