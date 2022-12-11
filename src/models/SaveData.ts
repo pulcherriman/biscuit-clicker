@@ -1,15 +1,22 @@
-import { Buildings } from "@/models/Building";
+import { getBuildingList } from "@/models/Building";
 import lodash from 'lodash';
 import type Building from "@/models/Building";
 
 class SaveParameter {
 	biscuits: number = 0;
-	biscuitsPerSecond: number = 3.155;
-	biscuitsPerClick: number = 4.0;
-	buildings: Array<Building> = Buildings;
+	buildings: Array<Building> = getBuildingList();
+
+	// constructor() {
+	// 	this.buildings = getBuildingList();
+	// }
 };
 
 export default class SaveData extends SaveParameter {
+	get biscuitsPerSecond(): number {
+		return this.buildings.reduce((acc, building) => acc + building.perSecond * building.count, 0);
+	}
+	biscuitsPerClick: number = 1.0;
+
 	public constructor(fields: SaveParameter = new SaveParameter()) {
 		super();
 		lodash.merge(this, fields);
@@ -24,6 +31,6 @@ export default class SaveData extends SaveParameter {
 	}
 
 	reset() {
-		Object.assign(this, new SaveData());
+		lodash.merge(this, new SaveData());
 	}
 };
