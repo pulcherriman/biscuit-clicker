@@ -1,11 +1,11 @@
 <template>
 	<div class="flex flex-1 flex-row justify-center m-2">
 		<div class="flex flex-col flex-1 bg-red-100 h-full mr-1">
-			<div  v-for="(building, i) in saveData.buildings" :key="building.name">
+			<div v-for="(building, i) in saveData.buildings" :key="i">
 				<BuildingButton 
-					:building="saveData.buildings[i]"
+					:building="building"
 					:biscuits="saveData.biscuits"
-					@buySingle="buySingle(saveData.buildings[i].id)" />
+					@buySingle="buySingle(building.id)" />
 			</div>
 		</div>
 		<div class="flex flex-1 bg-yellow-100 ml-1">

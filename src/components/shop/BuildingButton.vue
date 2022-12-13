@@ -1,6 +1,6 @@
 <template>
 	<div class="h-16 mx-1 mt-1">
-		<button @click="emits('buySingle')" class="px-2 py-1 h-full w-full text-left" :disabled="isSatisfy">
+		<button @click="buySingle" class="px-2 py-1 h-full w-full text-left" :disabled="isSatisfy">
 			<div>
 				<span class="text-2xl">
 					{{ building.name }}
@@ -42,6 +42,8 @@ const props = defineProps<{
 const emits = defineEmits<{
 	(e: 'buySingle'): void
 }>();
+
+const buySingle = () => emits('buySingle');
 
 const isSatisfy = computed(() => {
 	return props.building.price > props.biscuits;

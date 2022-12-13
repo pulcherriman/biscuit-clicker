@@ -41,7 +41,7 @@ const BuildingInfoList = [
 	new BuildingInfo(7, "Wizard Tower", 330000000, 44000),
 	new BuildingInfo(8, "Shipment", 5100000000, 260000),
 	new BuildingInfo(9, "Alchemy Lab", 75000000000, 1600000),
-	new BuildingInfo(10, "Portal", 1000000000000.0, 10000000),
+	new BuildingInfo(10, "Portal", 1000000000000, 10000000),
 ];
 
 export const getBuildingList = (): Array<Building> => {
