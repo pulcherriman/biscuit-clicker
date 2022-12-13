@@ -1,14 +1,13 @@
 import { getBuildingList } from "@/models/Building";
+import { getUpgradeList } from "@/models/Upgrade";
 import lodash from 'lodash';
 import type Building from "@/models/Building";
+import type Upgrade from "@/models/Upgrade";
 
 class SaveParameter {
 	biscuits: number = 0;
 	buildings: Array<Building> = getBuildingList();
-
-	// constructor() {
-	// 	this.buildings = getBuildingList();
-	// }
+	upgrades: Array<Upgrade> = getUpgradeList();
 };
 
 export default class SaveData extends SaveParameter {
