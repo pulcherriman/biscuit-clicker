@@ -4,7 +4,7 @@
 			<Buildings />
 		</div>
 		<div class="flex flex-col flex-1 bg-yellow-100 h-full mr-1">
-			<Upgrades />
+			<!-- <Upgrades /> -->
 		</div>
 	</div>
 </template>

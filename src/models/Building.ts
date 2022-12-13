@@ -1,3 +1,12 @@
+export class BuildingSaveData {
+	id: number;
+	count: number;
+	constructor(id: number, count: number) {
+		this.id = id;
+		this.count = count;
+	}
+};
+
 class BuildingInfo {
 	readonly id: number;
 	readonly name: string;
@@ -30,7 +39,7 @@ export default class Building extends BuildingInfo {
 	}
 }
 
-const BuildingInfoList = [
+export const BuildingInfoList = [
 	new BuildingInfo(0, "Cursor", 15, 0.1),
 	new BuildingInfo(1, "Grandma", 100, 1),
 	new BuildingInfo(2, "Farm", 1100, 8),
@@ -43,7 +52,3 @@ const BuildingInfoList = [
 	new BuildingInfo(9, "Alchemy Lab", 75000000000, 1600000),
 	new BuildingInfo(10, "Portal", 1000000000000, 10000000),
 ];
-
-export const getBuildingList = (): Array<Building> => {
-	return BuildingInfoList.map((buildingInfo) => new Building(buildingInfo.id, buildingInfo.name, buildingInfo.initialCost, buildingInfo.perSecond));
-};

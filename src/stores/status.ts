@@ -1,22 +1,26 @@
 import { reactive } from "vue";
 import { defineStore } from "pinia";
 import SaveData from "@/models/SaveData";
+import Status from "@/models/Status";
+import type IStatus from "@/models/Status";
 
 export const useStatusStore = defineStore("status", () => {
-	const loadFromLocalStorage = (): SaveData => {
+	const loadSaveDataFromLocalStorage = (): SaveData => {
 		const saveString: string = localStorage.getItem("savedata") || (new SaveData()).toString();
 		return SaveData.createFromString(saveString);
 	};
-	const saveData: SaveData = reactive(loadFromLocalStorage());
+
+	const saveData = loadSaveDataFromLocalStorage();
+	const status: Status = reactive(new Status(saveData)) as Status;
 
 	const saveToLocalStorage = () => {
-		localStorage.setItem("savedata", saveData.toString());
+		localStorage.setItem("savedata", status.getSaveDataString());
 	};
 
 	const hardReset = () => {
-		saveData.reset();
+		status.reset();
 		saveToLocalStorage();
 	}
 
-  return { saveData, saveToLocalStorage, hardReset };
+  return { status, saveToLocalStorage, hardReset };
 });

@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
 	<div class="grid grid-cols-5">
 		<div v-for="(upgrade, i) in visibleUpgrades" :key="i">
 			<UpgradeButton 
@@ -29,4 +29,4 @@ const visibleUpgrades = computed(() => {
 	});
 });
 
-</script>
+</script> -->

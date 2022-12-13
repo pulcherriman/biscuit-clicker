@@ -12,10 +12,10 @@ import BuildingButton from "@/components/shop/BuildingButton.vue";
 import { useStatusStore } from '@/stores/status';
 
 const saveDataStore = useStatusStore();
-const saveData = saveDataStore.saveData;
+const status = saveDataStore.status;
 
 const buySingle = function (id: number) {
-	saveData.biscuits -= saveData.buildings[id].price;
-	saveData.buildings[id].count += 1;
+	status.biscuits -= status.buildings[id].price;
+	status.buildings[id].count += 1;
 };
 </script>
