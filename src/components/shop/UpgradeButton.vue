@@ -2,7 +2,7 @@
 	<div class="h-16 mx-1 mt-1">
 		<button @click="buy" class="h-full w-full" :disabled="isSatisfy">
 			<div>
-				icon
+				{{ upgrade.id }}
 			</div>
 		</button>
 	</div>
@@ -23,11 +23,11 @@ button:disabled {
 <script setup lang="ts">
 import { computed } from "@vue/reactivity";
 import type Upgrade from "@/models/Upgrade";
-// import Number from "@/components/Number.vue";
+import type SaveData from "@/models/SaveData";
 
 const props = defineProps<{
+	saveData: SaveData
 	upgrade: Upgrade,
-	biscuits: Number
 }>();
 
 const emits = defineEmits<{
@@ -37,6 +37,6 @@ const emits = defineEmits<{
 const buy = () => emits('buy');
 
 const isSatisfy = computed(() => {
-	return props.upgrade.price > props.biscuits;
+	return props.upgrade.getPrice(props.saveData) > props.saveData.biscuits;
 });
 </script>

@@ -2,8 +2,8 @@
 	<div class="grid grid-cols-5">
 		<div v-for="(upgrade, i) in visibleUpgrades" :key="i">
 			<UpgradeButton 
+				:saveData="saveData"
 				:upgrade="upgrade"
-				:biscuits="saveData.biscuits"
 				@buy="buy(upgrade.id)"
 				/>
 		</div>
@@ -19,7 +19,7 @@ const saveDataStore = useStatusStore();
 const saveData = saveDataStore.saveData;
 
 const buy = function (id: number) {
-	saveData.biscuits -= saveData.upgrades[id].price;
+	saveData.biscuits -= saveData.upgrades[id].getPrice(saveData);
 	saveData.upgrades[id].isBought = true;
 };
 

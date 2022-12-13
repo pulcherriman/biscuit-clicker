@@ -12,9 +12,19 @@ class SaveParameter {
 
 export default class SaveData extends SaveParameter {
 	get biscuitsPerSecond(): number {
-		return this.buildings.reduce((acc, building) => acc + building.perSecond * building.count, 0);
+		const buildingProduction = this.upgrades.filter((upgrade) => upgrade.isBought).reduce((acc, upgrade) => {
+			upgrade.effect.multipleBuildingProduction.forEach((multiple, index) => {
+				acc[index] *= multiple;
+			});
+			return acc;
+		}, [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]);
+
+		return this.buildings.reduce((acc, building) => acc + building.count * building.perSecond * buildingProduction[building.id], 0.0);
 	}
-	biscuitsPerClick: number = 1.0;
+
+	get biscuitsPerClick(): number {
+		return this.upgrades.filter((upgrade) => upgrade.isBought).reduce((acc, upgrade) => acc * upgrade.effect.multipleBiscuitPerClick, 1.0);
+	};
 
 	public constructor(fields: SaveParameter = new SaveParameter()) {
 		super();
