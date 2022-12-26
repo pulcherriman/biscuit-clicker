@@ -23,6 +23,7 @@ export default class Upgrade implements UpgradeInfo {
 	readonly effect: Effect;
 	// readonly iconURL: string;
 
+	isVisible: boolean = false;
 	isBought: boolean = false;
 
 
@@ -39,6 +40,7 @@ export default class Upgrade implements UpgradeInfo {
 	toJSON () {
 		return {
 			id: this.id,
+			isVisible: this.isVisible,
 			isBought: this.isBought,
 		};
 	}

@@ -1,5 +1,5 @@
 <template>
-	<div class="h-16 mx-1 mt-1">
+	<div v-if="upgrade.isVisible" class="h-16 mx-1 mt-1">
 		<button @click="buy" class="h-full w-full" :disabled="isSatisfy">
 			<div>
 				{{ upgrade.id }}

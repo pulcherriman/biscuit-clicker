@@ -1,6 +1,6 @@
 <template>
 	<div class="grid grid-cols-5">
-		<div v-for="(upgrade, i) in visibleUpgrades" :key="i">
+		<div v-for="(upgrade, i) in unboughtUpgrades" :key="i">
 			<UpgradeButton 
 				:saveData="saveData"
 				:upgrade="upgrade"
@@ -14,18 +14,29 @@
 import { computed } from '@vue/reactivity';
 import { useStatusStore } from '@/stores/status';
 import UpgradeButton from '@/components/shop/UpgradeButton.vue';
+import { watch } from 'vue';
 
 const saveDataStore = useStatusStore();
 const saveData = saveDataStore.saveData;
+
+watch(saveData, () => {
+	saveData.upgrades.filter((upgrade) => {
+		return upgrade.isVisible === false;
+	}).forEach((upgrade) => {
+		if (upgrade.isAvailable(saveData)) {
+			upgrade.isVisible = true;
+		}
+	});
+});
 
 const buy = function (id: number) {
 	saveData.biscuits -= saveData.upgrades[id].getPrice(saveData);
 	saveData.upgrades[id].isBought = true;
 };
 
-const visibleUpgrades = computed(() => {
+const unboughtUpgrades = computed(() => {
 	return saveData.upgrades.filter((upgrade) => {
-		return upgrade.isBought === false && upgrade.isAvailable(saveData);
+		return upgrade.isBought === false;
 	});
 });
 
